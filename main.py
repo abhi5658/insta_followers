@@ -13,7 +13,7 @@ class InstaBot:
         sleep(2)
         self.driver.find_element_by_xpath("//a[contains(text(), 'Log in')]")\
             .click()
-        sleep(2)
+        sleep(1)
         self.driver.find_element_by_xpath("//input[@name=\"username\"]")\
             .send_keys(username)
         self.driver.find_element_by_xpath("//input[@name=\"password\"]")\
@@ -24,4 +24,10 @@ class InstaBot:
         self.driver.find_element_by_xpath("//button[contains(text(), 'Not Now')]")\
             .click()
 
-startWeb = InstaBot(secret_username, secret_password)
+    def get_unfollowers(self):
+        sleep(1)
+        self.driver.find_element_by_xpath("//a[contains(@href,'/{}')]".format(secret_username))\
+            .click()
+
+startInsta = InstaBot(secret_username, secret_password)
+startInsta.get_unfollowers()
