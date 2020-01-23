@@ -1,6 +1,6 @@
 from selenium import webdriver
 from time import sleep
-from secrets import secret_username,secret_username
+from secrets import secret_username,secret_password
 
 # options = webdriver.ChromeOptions()
 # options.add_experimental_option('excludeSwitches', ['enable-logging'])
