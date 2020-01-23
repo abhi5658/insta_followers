@@ -29,5 +29,9 @@ class InstaBot:
         self.driver.find_element_by_xpath("//a[contains(@href,'/{}')]".format(secret_username))\
             .click()
 
+# the below code closes the browser upon completing execution
+# hence assigning to variable required
+# InstaBot(secret_username, secret_password)
+
 startInsta = InstaBot(secret_username, secret_password)
 startInsta.get_unfollowers()
