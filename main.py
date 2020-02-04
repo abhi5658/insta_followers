@@ -54,7 +54,7 @@ class InstaBot:
         last_height, height = 0, 1
         scroll = 0
         temploop = 0
-        print("scrolling.", end='', flush=True)
+        print("scrolling", end='', flush=True)
         # while last_height != height:
         while temploop < 2:
             last_height = height
@@ -68,10 +68,10 @@ class InstaBot:
             """, scroll_box)
         print('scrolled ', scroll, 'times')
         links = scroll_box.find_elements_by_tag_name('a')
-        names = [name.text for name in links if name.text != '']
-        # print(names)
-        for link in links:
-            print(link.text)
+        names = [name.text for name in links """if name.text != ''"""]
+        print(names)
+        # for link in links:
+            # print(link.text)
         # print(links)
 
     def wait_find_click(self, xpath_text):
@@ -83,7 +83,7 @@ class InstaBot:
         return None if elements else False
 
 
-# the below code closes the browser upon completing execution
+# the below commented code closes the browser upon completing execution
 # hence assigning to variable required
 # InstaBot(secret_username, secret_password)
 startInsta = InstaBot(secret_username, secret_password)
