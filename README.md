@@ -1,6 +1,6 @@
-# insta_followers
+# Instagram get followers list
 
-This code opens web browser; logins to instagram with credentials stored in 'secret.py'.</br>
+This code opens web browser and logins to instagram with credentials stored in 'secret.py'.</br>
 Fetches the list of users that you follow and your followers and returns back the users which aren't following you back.
 
 ## Steps to build:
