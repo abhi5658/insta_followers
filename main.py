@@ -43,11 +43,21 @@ class InstaBot:
             .click()
         # sleep(4)
         self.is_element_exist("//a[contains(@href,'/following')]")
-        print('opening follwing tab')
+        print('opening following tab')
         self.driver.find_element_by_xpath("//a[contains(@href,'/following')]")\
             .click()
-        
-        # some code if  there are suggestions popping in 'following' tab
+        print('scanning following users')
+        following = self._get_users()
+        self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]")\
+            .click()
+        print('scanning followers')
+        followers = self._get_users()
+        not_following_back = [user for user in following if user not in followers]
+        print('===Users not following back...====')
+        print(not_following_back)
+
+    def _get_users(self):
+        # some code if there are suggestions popping in 'following' tab
         # self.is_element_exist("/html/body/div[4]/div/div[2]")
         sleep(3)
         scroll_box = self.driver.find_element_by_xpath("/html/body/div[4]/div/div[2]")
@@ -55,8 +65,8 @@ class InstaBot:
         scroll = 0
         temploop = 0
         print("scrolling", end='', flush=True)
-        # while last_height != height:
-        while temploop < 2:
+        while last_height != height:
+        # while temploop < 3:
             last_height = height
             print(".", end='',flush=True)
             sleep(1)
@@ -67,12 +77,15 @@ class InstaBot:
                 return arguments[0].scrollHeight;
             """, scroll_box)
         print('scrolled ', scroll, 'times')
+        print('making a list...')
         links = scroll_box.find_elements_by_tag_name('a')
-        names = [name.text for name in links """if name.text != ''"""]
-        print(names)
+        names = [name.text for name in links if name.text != '']
+        # print(names)
+        self.driver.find_element_by_xpath("/html/body/div[4]/div/div[1]/div/div[2]/button").click()
         # for link in links:
             # print(link.text)
         # print(links)
+        return names
 
     def wait_find_click(self, xpath_text):
         elements = self.wait.until(EC.visibility_of_all_elements_located((By.XPATH, xpath_text)))
