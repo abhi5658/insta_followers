@@ -15,3 +15,6 @@ Fetches the list of users that you follow and your followers and returns back th
     - Place the unzipped .exe file in C:\Windows
 - Run program inside activated environment
     - python main.py
+
+### Skipped future commits for secrets.py using git cmd
+- git update-index --skip-worktree < path-name >
